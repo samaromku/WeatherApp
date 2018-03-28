@@ -1,4 +1,4 @@
-package ru.andrey.savchenko.weatherapp.mainactivity
+package ru.andrey.savchenko.weatherapp.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -26,8 +26,8 @@ class MainAdapter(dataList: List<DayData>,
     inner class WeatherHolder(itemView: View) : BaseViewHolder<DayData>(itemView) {
         override fun bind(t: DayData, clickListener: OnItemClickListener) {
             super.bind(t, clickListener)
-            val celsius = t.temp.day -273
-            tvTemp.text = DecimalFormat("#.##").format(celsius)
+            val celsius = t.temp.day - 273
+            tvTemp.text = DecimalFormat("#.##").format(celsius) + "C"
             val date = Date(t.dt.toLong() * 1000)
             tvDate.text = SimpleDateFormat("dd.MM.yyyy").format(date)
         }

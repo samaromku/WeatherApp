@@ -1,4 +1,4 @@
-package ru.andrey.savchenko.weatherapp.mainactivity
+package ru.andrey.savchenko.weatherapp.main
 
 import ru.andrey.savchenko.weatherapp.entities.DayData
 
@@ -8,4 +8,7 @@ import ru.andrey.savchenko.weatherapp.entities.DayData
 interface MainView {
     fun showError(error:String)
     fun updateAdapter(list:List<DayData>)
+    fun showProgress()
+    fun hideProgress()
+    fun setCityName(cityName:String)
 }

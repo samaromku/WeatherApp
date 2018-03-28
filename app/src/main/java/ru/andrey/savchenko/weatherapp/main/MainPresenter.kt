@@ -1,4 +1,4 @@
-package ru.andrey.savchenko.weatherapp.mainactivity
+package ru.andrey.savchenko.weatherapp.main
 
 import com.google.gson.Gson
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +16,11 @@ class MainPresenter(val view: MainView) {
         interActor.getWeather(city)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe({ r -> r.list?.let { view.updateAdapter(it) } },
+                .doOnSubscribe { disposable -> view.showProgress() }
+                .doFinally({ view.hideProgress() })
+                .subscribe({ r ->
+                    view.setCityName(city.capitalize())
+                    r.list?.let { view.updateAdapter(it) } },
                         { t ->
                             if (t is HttpException) {
                                 val errorResponse: ErrorResponse =

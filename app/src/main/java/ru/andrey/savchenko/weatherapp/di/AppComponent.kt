@@ -1,7 +1,7 @@
 package ru.andrey.savchenko.weatherapp.di
 
 import dagger.Component
-import ru.andrey.savchenko.weatherapp.mainactivity.MainInterActor
+import ru.andrey.savchenko.weatherapp.main.MainInterActor
 import javax.inject.Singleton
 
 /**

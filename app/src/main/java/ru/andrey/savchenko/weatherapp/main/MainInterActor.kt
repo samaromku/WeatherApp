@@ -1,8 +1,6 @@
-package ru.andrey.savchenko.weatherapp.mainactivity
+package ru.andrey.savchenko.weatherapp.main
 
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import ru.andrey.savchenko.weatherapp.App
 import ru.andrey.savchenko.weatherapp.entities.Weather
 import ru.andrey.savchenko.weatherapp.network.WeatherService

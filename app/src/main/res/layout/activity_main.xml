@@ -4,7 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ru.andrey.savchenko.weatherapp.mainactivity.MainActivity">
+    tools:context="ru.andrey.savchenko.weatherapp.main.MainActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:progress="25"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,6 +44,16 @@
             android:src="@drawable/ic_search" />
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvCityName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        tools:text="Лондон"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvWeather"
