@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="city">Город</string>
+    <string name="temp">Температура</string>
+    <string name="date">Дата</string>
 </resources>

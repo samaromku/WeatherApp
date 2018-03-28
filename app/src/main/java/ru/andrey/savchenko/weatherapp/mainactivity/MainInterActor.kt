@@ -1,8 +1,10 @@
 package ru.andrey.savchenko.weatherapp.mainactivity
 
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.andrey.savchenko.weatherapp.App
+import ru.andrey.savchenko.weatherapp.entities.Weather
 import ru.andrey.savchenko.weatherapp.network.WeatherService
 import javax.inject.Inject
 
@@ -18,15 +20,10 @@ class MainInterActor {
         App.appComponent?.inject(this)
     }
 
-    fun getWeather() {
-        service.getWeatherPerWeek("Санкт-Петербург",
-//                "day",
-//                "",
-//                "",
+    fun getWeather(city:String):Single<Weather> {
+        return service.getWeatherPerWeek(
+                city,
+                "7",
                 API_KEY)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({ r -> println(r) },
-                        { t -> t.printStackTrace() })
     }
 }

@@ -15,7 +15,7 @@ import javax.inject.Singleton
  */
 @Module
 class AppModule {
-    val BASE_URL = "http://history.openweathermap.org"
+    val BASE_URL = "http://api.openweathermap.org"
 
     @Provides
     @Singleton
