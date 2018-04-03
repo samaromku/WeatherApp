@@ -1,6 +1,7 @@
 package ru.andrey.savchenko.weatherapp.main
 
 import android.app.AlertDialog
+import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import ru.andrey.savchenko.weatherapp.R
 import ru.andrey.savchenko.weatherapp.entities.DayData
 import ru.andrey.savchenko.weatherapp.interfaces.OnItemClickListener
+import ru.tander.pharmacy.base.basemvp.PresenterGetter
 
 class MainActivity : AppCompatActivity(), MainView {
     private lateinit var presenter: MainPresenter
@@ -21,7 +23,7 @@ class MainActivity : AppCompatActivity(), MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        presenter = MainPresenter(this)
+        presenter = PresenterGetter.getPresenter(MainPresenter::class.java)
         etSearchCity.setOnEditorActionListener(TextView.OnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 presenter.getWeather(etSearchCity.text.toString())
@@ -30,6 +32,16 @@ class MainActivity : AppCompatActivity(), MainView {
             false
         })
         btnSearch.setOnClickListener { presenter.getWeather(etSearchCity.text.toString()) }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter.onAttachView(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        presenter.onDetachView()
     }
 
     override fun showError(error: String) {
